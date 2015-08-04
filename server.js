@@ -8,6 +8,7 @@ var bodyParser	= require('body-parser'); // get body-parser
 var morgan	= require('morgan'); // used to see requests
 var mongoose	= require('mongoose'); // for working w/ our database
 var port	= process.env.PORT || 8080; // set the port for our app
+var User	= require('./app/models/user');
 
 // APP CONFIGURATION ------------
 // use body parser so we can grab information from POST request
