@@ -1,13 +1,12 @@
-// grab the packages that we need for the user model
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
+var mongoose     = require('mongoose');
+var Schema       = mongoose.Schema;
+var bcrypt 		 = require('bcrypt-nodejs');
 
-// user schema
-var UserSchema = new Schema({
+// user schema 
+var UserSchema   = new Schema({
 	name: String,
-    	username: { type: String, required: true, index: { unique: true}},
-    	password: { type: String, required: true, select: false }
+	username: { type: String, required: true, index: { unique: true }},
+	password: { type: String, required: true, select: false }
 });
 
 // hash the password before the user is saved
@@ -34,5 +33,4 @@ UserSchema.methods.comparePassword = function(password) {
 	return bcrypt.compareSync(password, user.password);
 };
 
-// return the model
 module.exports = mongoose.model('User', UserSchema);
